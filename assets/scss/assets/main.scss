@@ -1,0 +1,256 @@
+@use 'sass:map';
+
+@import '~scss_components/reset';
+@import '~scss_components/variables';
+@import '~scss_components/mixins';
+@import '~scss_components/placeholders';
+
+@each $name, $theme in $themes-map {
+    [data-theme="#{$name}"] {
+        @include spread-map($theme);
+    }
+}
+
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #000000;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--theme-accent-primary);
+    }
+}
+
+body {
+    // background-image: url('~images/bg.gif');
+    background-color: #171717;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    color: var(--theme-text-primary);
+}
+
+h1 {
+    font-size: 2em;
+    font-family: 'Open Sans';
+}
+
+.glass {
+    background: var(--theme-glass-bg-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--theme-glass-border-color);
+}
+
+.navbar {
+    &-main {
+        width: calc(100vw - $scrollbar-width); // Offset width so it doesn't overlap with/overflow into the scrollbar
+        position: fixed;
+        top: 0;
+        justify-content: space-between;
+        z-index: 999;
+    }
+
+    &-section {
+        list-style: none;
+        overflow: hidden;
+        align-items: center;
+    }
+
+    &-item {
+        align-self: center;
+        height: 100%;
+        transition: background-color ease-in-out 300ms;
+        display: flex;
+        position: relative;
+        
+        &:hover {
+            background-color: var(--theme-navbar-item-hover);
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 0%;
+            content: ".";
+            color: transparent;
+            background: rgb(255, 255, 255);
+            height: 2px;
+            transition: width 300ms;
+            transform-origin: center;
+        }
+    }
+
+    &-nohoverline::after {
+        display: none;
+    }
+
+    &-link {
+        padding: 0rem 1rem 0rem 1rem;
+        display: flex;
+        align-self: center;
+        text-decoration: none;
+        color: white;
+        position: relative;
+        height: 100%;
+        align-items: center;
+    }
+
+    &-separator {
+        padding: 1rem 0.5rem 1rem 0.5rem;
+        color: white;
+
+        &:hover {
+            cursor: default;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+}
+  
+.flex-col {
+    flex-direction: column;
+}
+  
+.flex-row {
+    flex-direction: row;
+}
+  
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+#themeMenuDiv {
+    position: fixed;
+    width: 3rem;
+    height: 3rem;
+    bottom: 4rem;
+    right: 4rem + $scrollbar-width;
+    
+    &::after {
+        display: block;
+        content: '';
+        width: 2.75rem;
+        height: 2.75rem;
+        bottom: 4rem;
+        right: 4rem + $scrollbar-width;
+        border-radius: 50%;
+        position: fixed;    
+        z-index: -2;
+        background-color: var(--theme-glass-bg-color);
+        transition: all .3s ease;
+        border-width: 1px;
+        border-style: solid;
+        border-color: transparent;
+    }
+
+    &:has(.checkboxActive)::after {
+        border-color: var(--theme-accent-primary);
+        transform: scale3d(5.8, 5.8, 1);
+        transition-timing-function: cubic-bezier(.68, 1.55, .265, 1);
+    }
+}
+
+.themeMenuBtn {
+    @extend %themeBtnBase;
+    z-index: 10;
+}
+
+.themeBtn {
+    @extend %themeBtnBase;
+    &:hover {
+        svg {
+            animation: none;            
+        }
+    }
+}
+.checkboxActive {
+    border-color: var(--theme-accent-primary);
+}
+
+.themeMenu-list {
+    list-style: none;
+}
+
+.themeMenu-item {
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.checkboxActive + .themeMenu-list .themeMenu-item {
+    opacity: 1;
+
+    @each $name, $theme in $themes-map {
+        $i: index($themes-map, $name $theme);
+        &:nth-child(#{$i}) button.themeBtn {
+            --theme-name: #{$name};
+            transform: rotate(calc(-220deg / $theme-count * $i)) translateX(calc(8.7rem - 3rem));
+            background-color: map.get($theme, --theme-glass-bg-color);
+            border-color: map.get($theme, --theme-glass-border-color);
+            transition-delay: calc($i * 25ms);
+
+            &:hover {
+                box-shadow: 0 0 12px map.get($theme, --theme-accent-primary);
+                border-color: map.get($theme, --theme-accent-primary);
+            }
+
+            svg {
+                transform: rotate(calc(220deg / $theme-count * $i));
+            }
+        }
+    }
+
+}
+
+
+
+.dialog {
+    position: fixed;
+    margin: 0 7.5rem 0 7.5rem;
+    top: 3.5rem;
+    transform: translateX(-50%, 0), translateY(-50%, 0);
+    min-height: calc(100vh - 7rem);
+    min-width: calc(100vw - 15rem);
+    border-radius: 20px;
+
+    &-navbar {
+        border-bottom: 2px solid var(--theme-glass-border-color);
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            background-color: transparent;
+            color: white;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@keyframes themeMenuSvgRotate {
+    50%   {transform: rotate( 60deg);}
+    100%  {transform: rotate(-60deg);}
+}

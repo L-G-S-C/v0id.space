@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "id_html": "home",
+        "icon_src": "fas",
+        "icon": "house"
+    },
+    {
+        "id": 2,
+        "id_html": "about",
+        "icon_src": "fas",
+        "icon": "circle-question"
+    },
+    {
+        "id": 3,
+        "id_html": "projects",
+        "icon_src": "fas",
+        "icon": "folder-open"
+    },
+    {
+        "id": 4,
+        "id_html": "contact",
+        "icon_src": "fas",
+        "icon": "address-card"
+    }
+]

@@ -1,0 +1,56 @@
+// Default theme
+$theme-map-sanguine: (
+    --theme-name: 'sanguine',
+    --theme-accent-primary: hsla(0, 100%, 30%, 100%),
+    --theme-text-primary: hsla(0, 36%, 82%, 100%),
+    --theme-glass-bg-color: hsla(0, 100%, 2.9%, 60%),
+    --theme-glass-border-color: hsla(0, 100%, 2.9%, 100%),
+    --theme-navbar-item-hover: hsla(0, 100%, 30%, 40%),
+);
+
+$theme-map-venomous: (
+    --theme-name: 'venomous',
+    --theme-accent-primary: hsl(291, 100%, 24.7%),
+    --theme-text-primary: hsl(291, 36%, 82%),
+    --theme-glass-bg-color: hsla(275, 100%, 2.9%, 60%),
+    --theme-glass-border-color: hsla(275, 100%, 2.9%, 100%),
+    --theme-navbar-item-hover: hsla(291, 100%, 30%, 40%),
+);
+
+$theme-map-royal: (
+    --theme-name: 'royal',
+    --theme-accent-primary: hsl(51, 100%, 43%),
+    --theme-text-primary: hsl(51, 36%, 82%),
+    --theme-glass-bg-color: hsla(51, 100%, 2.9%, 60%),
+    --theme-glass-border-color: hsla(51, 100%, 2.9%, 100%),
+    --theme-navbar-item-hover: hsla(51, 100%, 30%, 40%),
+);
+
+$theme-map-aquatic: (
+    --theme-name: 'aquatic',
+    --theme-accent-primary: hsl(180, 100%, 27%),
+    --theme-text-primary: hsl(180, 36%, 82%),
+    --theme-glass-bg-color: hsla(180, 100%, 2.9%, 60%),
+    --theme-glass-border-color: hsla(180, 100%, 2.9%, 100%),
+    --theme-navbar-item-hover: hsla(180, 100%, 30%, 40%),
+);
+
+$theme-map-forest: (
+    --theme-name: 'forest',
+    --theme-accent-primary: hsl(120, 61%, 34%),
+    --theme-text-primary: hsl(120, 36%, 82%),
+    --theme-glass-bg-color: hsla(120, 100%, 2.9%, 60%),
+    --theme-glass-border-color: hsla(120, 100%, 2.9%, 100%),
+    --theme-navbar-item-hover: hsla(120, 100%, 30%, 40%),
+);
+
+$themes-map: (
+    sanguine : $theme-map-sanguine,
+    venomous : $theme-map-venomous,
+    royal    : $theme-map-royal   ,
+    aquatic  : $theme-map-aquatic ,
+    forest   : $theme-map-forest  ,
+);
+
+$scrollbar-width: 0.35rem;
+$theme-count: length($list: $themes-map);

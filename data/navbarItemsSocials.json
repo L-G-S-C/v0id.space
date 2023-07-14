@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "id_html": "linkedin",
+        "icon_src": "fab",
+        "icon": "linkedin"
+    },
+    {
+        "id": 2,
+        "id_html": "github",
+        "icon_src": "fab",
+        "icon": "github"
+    }
+]

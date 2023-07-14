@@ -1,0 +1,47 @@
+%flex {
+    display: flex
+};
+
+%flex-col {
+    @extend %flex;
+    flex-direction: column;
+};
+
+%flex-row {
+    @extend %flex;
+    flex-direction: row;
+};
+
+%flex-center {
+    @extend %flex;
+    align-items: center;
+    justify-content: center;
+};
+
+
+%themeBtnBase {
+    position: fixed;
+    border-radius: 50%;
+    color: white;
+    transition: all 500ms;
+    border-width: 2px !important;
+    border-style: solid;
+    border-color: var(--theme-glass-border-color);
+    width: 3rem;
+    height: 3rem;
+    bottom: 4rem;
+    right: 4rem + $scrollbar-width;
+
+    svg {
+        pointer-events: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 30px var(--theme-accent-primary);
+        border-color: var(--theme-accent-primary);
+        svg {
+            animation: themeMenuSvgRotate 2000ms infinite alternate;
+        }
+    }
+}
