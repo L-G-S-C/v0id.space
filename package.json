@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.16.19",
+    "gh-pages": "^5.0.0",
     "nuxt": "^3.6.2",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
@@ -23,10 +24,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@nuxt/image-edge": "1.0.0-rc.1-28143901.afe4120",
-    "@vueuse/nuxt": "^10.2.1",
-    "firebase-admin": "^11.10.1",
-    "firebase-functions": "^4.4.1",
-    "firebase-functions-test": "^3.1.0",
-    "gh-pages": "^5.0.0"
+    "@vueuse/nuxt": "^10.2.1"
   }
 }

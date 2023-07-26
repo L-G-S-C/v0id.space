@@ -1,6 +1,5 @@
 <script setup>
     const { navItemsMain, navItemsSocials } = useNavItems();
-    console.log(navItemsMain);
 </script>
 
 <template>

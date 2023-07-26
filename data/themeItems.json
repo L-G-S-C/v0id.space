@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "sanguine",
+        "icon": "droplet"
+    },
+    {
+        "id": 2,
+        "name": "venomous",
+        "icon": "skull-crossbones"
+    },
+    {
+        "id": 3,
+        "name": "royal",
+        "icon": "crown"
+    },
+    {
+        "id": 4,
+        "name": "aquatic",
+        "icon": "water"
+    },
+    {
+        "id": 5,
+        "name": "forest",
+        "icon": "tree"
+    }
+]

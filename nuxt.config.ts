@@ -27,7 +27,11 @@ export default defineNuxtConfig({
 		},
 		baseURL: '/v0id.space/'
 	},
-	generate: {
-	},
 	ssr: true,
+	plugins: [
+		'~/plugins/fontawesome.js'
+	],
+	experimental: {
+		payloadExtraction: true
+	},
 })

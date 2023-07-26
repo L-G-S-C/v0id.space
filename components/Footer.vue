@@ -1,6 +1,7 @@
 <script setup>
     const themeMenuWheel = ref(false);
-    const theme = useLocalStorage('theme', 'sanguine')
+    const theme = useLocalStorage('theme', 'sanguine');
+    const { themeItems } = useThemeItems();
     useHead({
         htmlAttrs: {'data-theme': theme.value ? theme.value : 'sanguine'}
     })
@@ -24,31 +25,11 @@
             <font-awesome-icon :icon="['fas', 'palette']" size="xl"/>
         </button>
         <ul class="themeMenu-list">
-            <li class="themeMenu-item">
-                <button type="button" class="themeBtn glass" theme="sanguine" @click="changeTheme">
-                    <font-awesome-icon :icon="['fas', 'droplet']" size="xl" />
+            <li v-for="themeItem in themeItems" class="themeMenu-item">
+                <button type="button" class="themeBtn glass" :theme="themeItem.name" @click="changeTheme">
+                    <font-awesome-icon :icon="['fas', themeItem.icon]" size="xl" />
                 </button>
-            </li>
-            <li class="themeMenu-item">
-                <button type="button" class="themeBtn glass" theme="venomous" @click="changeTheme">
-                    <font-awesome-icon :icon="['fas', 'skull-crossbones']" size="xl" />
-                </button>
-            </li>
-            <li class="themeMenu-item">
-                <button type="button" class="themeBtn glass" theme="royal" @click="changeTheme">
-                    <font-awesome-icon :icon="['fas', 'crown']" size="xl" />
-                </button>
-            </li>
-            <li class="themeMenu-item">
-                <button type="button" class="themeBtn glass" theme="aquatic" @click="changeTheme">
-                    <font-awesome-icon :icon="['fas', 'water']" size="xl" />
-                </button>
-            </li>
-            <li class="themeMenu-item">
-                <button type="button" class="themeBtn glass" theme="forest" @click="changeTheme">
-                    <font-awesome-icon :icon="['fas', 'tree']" size="xl" />
-                </button>
-            </li>
+            </li>            
         </ul>
     </div>
 
